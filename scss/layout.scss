@@ -1,0 +1,412 @@
+$firstColor:	#0CA5B0;
+$secondColor:	#4E3F30;
+$thirdColor: 	#FEFEEB;
+$fourthColor: 	#F8F4E4;
+$fifthColor: 	#A5B3AA;
+
+$fa-font-path:        "../lib/font-awesome/fonts" !default;
+@import "../app/lib/font-awesome/scss/font-awesome";
+
+$flag-icon-css-path: '../lib/flag-icon-css/flags';
+@import "../app/lib/flag-icon-css/sass/flag-icon";
+
+@import "../app/lib/bourbon/app/assets/stylesheets/bourbon";
+
+// $visual-grid: true;
+// $max-width: 100%;
+@import "../app/lib/neat/app/assets/stylesheets/neat";
+
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+	-webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+	box-shadow: $shadow;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+body{
+	@include perspective-origin(50% 50%);
+	@include perspective(300px);
+	margin:0;
+	font-family: 'Josefin Slab', serif;
+	background: $thirdColor;
+	font-weight: 400;
+}
+
+.pull-left{ float: left; }
+.pull-right{ float: right; }
+
+:focus,
+:active{
+	outline: 0;
+	border: none;
+}
+
+input, textarea, select{
+	&:focus,
+	&:active{
+		outline: 0;
+		border: none;
+	}
+
+	@include placeholder {
+		color: rgba(0,0,0,.2);
+	}
+}
+
+a,
+a:hover,
+a:active,
+a:visited{
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.container{
+	@include outer-container;
+}
+
+nav{
+	// @include position(fixed, 0 null null 0);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9000;
+	@include size(100% 60px);
+	min-height: 60px;
+	line-height:60px;
+	background: rgba( red($secondColor), green($secondColor), blue($secondColor), .7 );
+	color: $thirdColor;
+	display: none;
+
+	.container{
+
+		.links-menu{
+			
+			a{
+				float: left;
+				margin-right: 30px;
+			}
+
+		}
+
+		.flags{
+			margin-left: 30px;
+			// margin-top: 6px;
+		}
+
+	}
+
+}
+
+h1{
+	font-size: 50px;
+}
+
+h1, h2, h3{
+	font-weight: 300;
+}
+
+.banner{
+	background: $firstColor no-repeat center; //url('http://www.dreamholidayblog.com/wp-content/uploads/2014/08/blurry-city-night-skyline-wallpaper.jpg')
+	@include size(100% 550px);
+	color: $fourthColor;
+
+	.container{
+		position: relative;
+		z-index: auto;
+
+		.nome-foto{
+			@include position(absolute, 30px null null 10px);
+			line-height: 43px;
+			vertical-align: middle;
+			padding-left: 50px;
+			font-size: 20px;
+
+			.foto{
+				@include size(40px);
+				border-radius: 50%;
+				@include position(absolute, 0 null null 0);
+				background-image: url('https://scontent-gru1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/11701165_851572808246713_8832551926644940655_n.jpg?oh=e8a413b7e3eb631d22ebda2bdd28fa5a&oe=56230ABB');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				border: solid 2px $fourthColor;
+			}
+
+		}
+
+		h1{
+			text-align: left;
+			@include position(absolute, 200px null null 10px);
+		}
+
+		.social-icons{
+			text-align: left;
+			@include position(absolute, 500px null null 10px);
+			font-size: 35px;
+
+			a{
+				margin: 0 5px;
+			}
+			
+		}
+
+		.language-flags{
+			text-align: right;
+			@include position(absolute, 30px 10px null null);
+			font-size: 12px;
+
+			a{
+				margin: 0 5px;
+			}
+
+		}
+
+	}
+
+}
+
+.skills{
+	padding-bottom: 120px;
+
+	.container{
+		padding-top: 50px;
+
+		h1, h2, h3{
+			color: $secondColor;
+		}
+
+		h2{
+			margin: 0;
+			margin-top: 50px;
+			margin-bottom: 10px;
+		}
+
+		.skill-area{
+			@include span-columns(12 of 12);
+			@include omega;
+
+			.skills-outer-containter{
+				@include span-columns(5 of 12);
+
+				&:nth-child(odd){
+					@include shift(1);
+				}
+
+				.skills-container{
+					@include span-columns(12 of 12);
+					@include omega;
+
+					.skill-clear{
+						@include omega;
+					}
+
+					.skill-item{
+						@include outer-container;
+						padding: 10px 0;
+						line-height: 23px;
+						vertical-align: middle;
+
+						.skill-name{
+							@include span-columns(3 of 12);
+						}
+
+						.skill-bar{
+							@include span-columns(9 of 12);
+							position: relative;
+							border: solid 1px $firstColor;
+							padding: 3px;
+							height: 23px;
+
+							&.skill-100{
+								@include box-shadow(0 0 4px $firstColor);
+							}
+
+							.skill-bar-fill{
+								
+								@include size(100% 15px);
+								background: $firstColor;
+								clear: both;
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+.portfolio{
+	background: $secondColor no-repeat center;
+	color: $fourthColor;
+
+	.container{
+		padding-top: 50px;
+
+		.portfolio-container{
+			@include outer-container;
+			@include omega;
+
+			.portfolio-item{
+				@include span-columns(4 of 12);
+				margin-bottom: 30px;
+				background-image: url('http://www.dreamholidayblog.com/wp-content/uploads/2014/08/blurry-city-night-skyline-wallpaper.jpg');
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-color: $secondColor;
+				height: 200px;
+				position: relative;
+				overflow: hidden;
+
+				&:nth-child(3n+3){
+					@include omega;
+				}
+
+				&:hover{
+
+					.portfolio-item-text{
+						@include transform( translateY(0) );
+					}
+
+				}
+
+				.portfolio-item-text{
+					@include position(absolute, 0 null null 0);
+					padding: 10px;
+					@include size(100%);
+					background: rgba(0,0,0,.7);
+					@include transition(all 500ms $ease-out-circ);
+					@include transform( translateY(159px) );
+
+					h3{ margin: 0; padding: 0; }
+
+					.links{
+						width: 100%;
+						text-align: center;
+						@include position(absolute, null null 15px 0);
+
+						a{
+							font-size: 20px;
+							border: 1px solid $fourthColor;
+							border-radius: 50%;
+							margin: 0 3px;
+							padding: 10px 13px;
+							line-height: 43px;
+							vertical-align: middle;
+							@include transition(all 300ms $ease-out-circ);
+
+							&:hover{
+								background: $fourthColor;
+								color: $secondColor;
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+
+.contact{
+	background: $fifthColor no-repeat center;
+	color: $fourthColor;
+
+	.container{
+		padding-top: 50px;
+		padding-bottom: 50px;
+
+		p{
+			font-size: 20px;
+			font-weight: 300;
+			padding-left: 30px;
+			position: relative;
+
+			i{
+				@include position(absolute, 0 null null 0);
+				font-size: 105%;
+			}
+
+		}
+		a{
+			text-decoration: underline;
+		}
+
+	}
+
+}
+
+.blink-me {
+  font-weight: 100;
+  font-size: 90%;
+  color: $fourthColor;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+  position: relative;
+  top:-5px;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: $fourthColor;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: $fourthColor;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: $fourthColor;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: $fourthColor;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: $fourthColor;
+  }
+}

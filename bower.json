@@ -1,0 +1,22 @@
+{
+  "name": "AlanPortfolio",
+  "version": "0.0.0",
+  "authors": [
+    "Alan Pazetto <alancpazetto@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.2.0",
+    "angularjs": "~1.4.0",
+    "bourbon": "~4.2.3",
+    "neat": "~1.7.2",
+    "flag-icon-css": "~0.7.1"
+  }
+}

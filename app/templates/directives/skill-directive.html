@@ -1,0 +1,12 @@
+<div class="skills-container">
+
+	<div class="skill-item" ng-repeat="skill in _skills">
+		<div class="skill-name">{{skill.name}}</div>
+		<div class="skill-bar" ng-class="{ 'skill-100' : skill.value === 100 }">
+			<div class="skill-bar-fill" style="width: {{skill.value}}%;">&nbsp;</div>
+		</div>
+	</div>
+
+	<div class="skill-clear"></div>
+
+</div>

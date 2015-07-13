@@ -1,0 +1,157 @@
+<html ng-app="AlanPazettoPortfolio">
+<head>
+	<title>Alan Pazetto - Web / Mobile Developer</title>
+	<meta charset="utf-8">
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:300,400,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
+</head>
+<body>
+
+<div class="banner" full-height>
+
+	<div class="container">
+
+		<div class="language-flags">
+			<a href="javascript:void(0);"><span class="flag-icon flag-icon-us"></span></a>
+			<a href="javascript:void(0);"><span class="flag-icon flag-icon-br"></span></a>
+		</div>
+
+		<div class="nome-foto">
+			<div class="foto"></div>
+			Alan Pazetto
+		</div>
+
+		<h1>
+			Hello, I'm Alan! <br>
+			And I'm Web and Mobile developer.<span class="blink-me">|</span>
+		</h1>
+
+		<div class="social-icons">
+			<a href="mailto:alancpazetto@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+			<a href="http://facebook.com/alan.pazetto" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a href="https://br.linkedin.com/pub/alan-pazetto/24/171/4ba" target="_blank"><i class="fa fa-linkedin"></i></a>
+			<a href="skype:alancpazetto?chat" target="_blank"><i class="fa fa-skype"></i></a>
+			<a href="https://github.com/alancpazetto" target="_blank"><i class="fa fa-github"></i></a>
+		</div>
+
+	</div>
+
+</div>
+
+<div class="skills" ng-controller="SkillController">
+
+	<div class="container">
+		
+		<h1>Skills</h1>
+
+		<div class="skill-area">
+
+			<h2>Web development</h2>
+
+			<div class="skills-outer-containter">
+				<h3>Front-end</h3>
+				<skill-list skills="skillsWeb.frontEnd"></skill-list>
+			</div>
+
+			<div class="skills-outer-containter">
+				<h3>Back-end</h3>
+				<skill-list skills="skillsWeb.backEnd"></skill-list>
+			</div>
+
+		</div>
+
+		<div class="skill-area">
+
+			<h2>Mobile development</h2>
+
+			<div class="skills-outer-containter">
+				<h3>Native</h3>
+				<skill-list skills="skillsMobile.native"></skill-list>
+			</div>
+
+			<div class="skills-outer-containter">
+				<h3>Hybrid</h3>
+				<skill-list skills="skillsMobile.hybrid"></skill-list>
+			</div>
+
+		</div>
+
+		<div class="skill-area">
+
+			<h2>Others Skills</h2>
+
+			<div class="skills-outer-containter">
+				<!-- <h3>Native</h3> -->
+				<skill-list skills="skillsOthers.partOne"></skill-list>
+			</div>
+
+			<div class="skills-outer-containter">
+				<!-- <h3>Hybrid</h3> -->
+				<skill-list skills="skillsOthers.partTwo"></skill-list>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="portfolio" ng-controller="PortfolioController">
+
+	<div class="container">
+		
+		<h1>Portfolio</h1>
+
+		<div class="portfolio-container">
+
+			<div class="portfolio-item" ng-repeat="portfolio in portfolioItens" style="background-image: url('{{ portfolio.image }}');">
+				
+				<div class="portfolio-item-text">
+					
+					<h3>{{ portfolio.title }}</h3>
+
+					<div class="details">
+						
+						<p>{{ portfolio.description }}</p>
+
+					</div>
+
+					<div class="links">
+						<a ng-repeat="link in portfolio.links" target="_blank" href="{{ link.url }}"><i class="fa {{ link.icon }}"></i></a>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="contact">
+
+	<div class="container">
+		
+		<h1>Contact</h1>
+
+		<p><i class="fa fa-envelope"></i> E-mail: <a target="_blank" href="mailto:alancpazetto@gmail.com">alancpazetto@gmail.com</a></p>
+		<p><i class="fa fa-facebook"></i> Facebook: <a target="_blank" href="http://facebook.com/alan.pazetto">facebook.com/alan.pazetto</a></p>
+		<p><i class="fa fa-linkedin"></i> Linkedin: <a target="_blank" href="https://br.linkedin.com/pub/alan-pazetto/24/171/4ba">Alan Pazetto</a></p>
+		<p><i class="fa fa-skype"></i> Skype: <a target="_blank" href="skype:alancpazetto?chat">alancpazetto</a></p>
+		<p><i class="fa fa-github"></i> GitHub: <a target="_blank" href="https://github.com/alancpazetto">github.com/alancpazetto</a></p>
+		<p><i class="fa fa-code"></i> See this code: <a target="_blank" href="https://github.com/alancpazetto/portfolio">github.com/alancpazetto/portfolio</a></p>
+
+	</div>
+
+</div>
+
+<script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/directives.js"></script>
+
+</body>
+</html>
