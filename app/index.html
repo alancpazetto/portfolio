@@ -2,6 +2,7 @@
 <head>
 	<title>Alan Pazetto - Web / Mobile Developer</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
 	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:300,400,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/layout.css">
 </head>
@@ -12,8 +13,8 @@
 	<div class="container">
 
 		<div class="language-flags">
-			<a href="javascript:void(0);"><span class="flag-icon flag-icon-us"></span></a>
-			<a href="javascript:void(0);"><span class="flag-icon flag-icon-br"></span></a>
+			<a href="javascript:void(0);" ng-click="changeLanguage('en-us');"><span class="flag-icon flag-icon-us"></span></a>
+			<a href="javascript:void(0);" ng-click="changeLanguage('pt-br');"><span class="flag-icon flag-icon-br"></span></a>
 		</div>
 
 		<div class="nome-foto">
@@ -22,16 +23,18 @@
 		</div>
 
 		<h1>
-			Hello, I'm Alan! <br>
-			And I'm Web and Mobile developer.<span class="blink-me">|</span>
+			{{ _t.banner.firstLine }} <br>
+			{{ _t.banner.secondLine }}<span class="blink-me">|</span>
 		</h1>
 
 		<div class="social-icons">
-			<a href="mailto:alancpazetto@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
-			<a href="http://facebook.com/alan.pazetto" target="_blank"><i class="fa fa-facebook"></i></a>
-			<a href="https://br.linkedin.com/pub/alan-pazetto/24/171/4ba" target="_blank"><i class="fa fa-linkedin"></i></a>
-			<a href="skype:alancpazetto?chat" target="_blank"><i class="fa fa-skype"></i></a>
-			<a href="https://github.com/alancpazetto" target="_blank"><i class="fa fa-github"></i></a>
+			<a title="E-mail" href="mailto:alancpazetto@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+			<a title="Facebook" href="http://facebook.com/alan.pazetto" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a title="LinkedIn" href="https://br.linkedin.com/pub/alan-pazetto/24/171/4ba" target="_blank"><i class="fa fa-linkedin"></i></a>
+			<a title="Skype" href="skype:alancpazetto?chat" target="_blank"><i class="fa fa-skype"></i></a>
+			<a title="GitHub" href="https://github.com/alancpazetto" target="_blank"><i class="fa fa-github"></i></a>
+			<a title="{{ _t.banner.seeThisCode }}" target="_blank" href="https://github.com/alancpazetto/portfolio"><i class="fa fa-code"></i></a>
+			<a title="{{ _t.banner.seeCV }}" target="_blank" href="{{ _t.general.cvLink }}"><i class="fa fa-user"></i></a>
 		</div>
 
 	</div>
@@ -42,11 +45,11 @@
 
 	<div class="container">
 		
-		<h1>Skills</h1>
+		<h1>{{ _t.skills.title }}</h1>
 
 		<div class="skill-area">
 
-			<h2>Web development</h2>
+			<h2>{{ _t.skills.webDevelopment }}</h2>
 
 			<div class="skills-outer-containter">
 				<h3>Front-end</h3>
@@ -62,15 +65,15 @@
 
 		<div class="skill-area">
 
-			<h2>Mobile development</h2>
+			<h2>{{ _t.skills.mobileDevelopment }}</h2>
 
 			<div class="skills-outer-containter">
-				<h3>Native</h3>
+				<h3>{{ _t.skills.native }}</h3>
 				<skill-list skills="skillsMobile.native"></skill-list>
 			</div>
 
 			<div class="skills-outer-containter">
-				<h3>Hybrid</h3>
+				<h3>{{ _t.skills.hybrid }}</h3>
 				<skill-list skills="skillsMobile.hybrid"></skill-list>
 			</div>
 
@@ -78,7 +81,7 @@
 
 		<div class="skill-area">
 
-			<h2>Others Skills</h2>
+			<h2>{{ _t.skills.otherSkills }}</h2>
 
 			<div class="skills-outer-containter">
 				<!-- <h3>Native</h3> -->
@@ -100,13 +103,13 @@
 
 	<div class="container">
 		
-		<h1>Portfolio</h1>
+		<h1>{{ _t.portfolio.title }}</h1>
 
 		<div class="portfolio-container">
 
-			<div class="portfolio-item" ng-repeat="portfolio in portfolioItens" style="background-image: url('{{ portfolio.image }}');">
+			<div class="portfolio-item" ng-class="{'open' : portfolioOpen[ $index ]}" ng-click="portfolioOpen[ $index ] = !portfolioOpen[ $index ]" ng-repeat="portfolio in portfolioItens[ _langCode ]" style="background-image: url('{{ portfolio.image }}');">
 				
-				<div class="portfolio-item-text">
+				<div class="portfolio-item-text" ng-click="">
 					
 					<h3>{{ portfolio.title }}</h3>
 
@@ -136,12 +139,13 @@
 		
 		<h1>Contact</h1>
 
-		<p><i class="fa fa-envelope"></i> E-mail: <a target="_blank" href="mailto:alancpazetto@gmail.com">alancpazetto@gmail.com</a></p>
-		<p><i class="fa fa-facebook"></i> Facebook: <a target="_blank" href="http://facebook.com/alan.pazetto">facebook.com/alan.pazetto</a></p>
-		<p><i class="fa fa-linkedin"></i> Linkedin: <a target="_blank" href="https://br.linkedin.com/pub/alan-pazetto/24/171/4ba">Alan Pazetto</a></p>
-		<p><i class="fa fa-skype"></i> Skype: <a target="_blank" href="skype:alancpazetto?chat">alancpazetto</a></p>
-		<p><i class="fa fa-github"></i> GitHub: <a target="_blank" href="https://github.com/alancpazetto">github.com/alancpazetto</a></p>
-		<p><i class="fa fa-code"></i> See this code: <a target="_blank" href="https://github.com/alancpazetto/portfolio">github.com/alancpazetto/portfolio</a></p>
+		<p><i class="fa fa-envelope"></i> <span class="title">E-mail:</span> <a title="E-mail" target="_blank" href="mailto:alancpazetto@gmail.com">alancpazetto@gmail.com</a></p>
+		<p><i class="fa fa-facebook"></i> <span class="title">Facebook:</span> <a title="Facebook" target="_blank" href="http://facebook.com/alan.pazetto">facebook.com/alan.pazetto</a></p>
+		<p><i class="fa fa-linkedin"></i> <span class="title">LinkedIn:</span> <a title="LinkedIn" target="_blank" href="https://br.linkedin.com/pub/alan-pazetto/24/171/4ba">Alan Pazetto</a></p>
+		<p><i class="fa fa-skype"></i> <span class="title">Skype:</span> <a title="Skype" target="_blank" href="skype:alancpazetto?chat">alancpazetto</a></p>
+		<p><i class="fa fa-github"></i> <span class="title">GitHub:</span> <a title="GitHub" target="_blank" href="https://github.com/alancpazetto">github.com/alancpazetto</a></p>
+		<p><i class="fa fa-code"></i> <span class="title">{{ _t.contact.seeThisCode }}:</span> <a title="{{ _t.contact.seeThisCode }}" target="_blank" href="https://github.com/alancpazetto/portfolio">github.com/alancpazetto/portfolio</a></p>
+		<p><i class="fa fa-user"></i> <a title="{{ _t.contact.seeCV }}" target="_blank" href="{{ _t.general.cvLink }}">{{ _t.contact.seeCV }}</a></p>
 
 	</div>
 

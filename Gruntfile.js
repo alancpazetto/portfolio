@@ -13,6 +13,15 @@ module.exports = function (grunt) {
 			}
 		},
 		watch : {
+			options: {
+				livereload : true
+			},
+		    js: {
+		        files: "./app/js/*.js"
+		    },
+		    html: {
+		        files: "./app/*.html"
+		    },
 			css : {
 				files : './scss/*.scss',
 				tasks : ['sass']
@@ -22,10 +31,12 @@ module.exports = function (grunt) {
 			server : {
 				options : {
 					port : 5000,
+					// hostname: '192.168.1.19',
 					base : 'app',
 					open : true,
 					useAvailablePort : true,
-					keepalive : true
+					keepalive : true,
+					livereload : true
 				}
 			}
 		},

@@ -1,9 +1,11 @@
 appModule.controller('SkillController', [
 	'$log', 
 	'$scope',
+	'$rootScope',
 function(
 	$log,
-	$scope
+	$scope,
+	$rootScope
 ){
 	
 	$scope.skillsWeb = {
@@ -16,7 +18,7 @@ function(
 			{
 				name: 'CSS3',
 				value : 100
-			},
+			}, 
 			{
 				name: 'JavaScript',
 				value : 100
@@ -38,8 +40,16 @@ function(
 				value : 85
 			},
 			{
+				name: 'Bootstrap',
+				value : 85
+			},
+			{
 				name: 'SASS',
 				value : 85
+			},
+			{
+				name: 'Bourbon.io',
+				value : 68
 			}
 		],
 
@@ -146,7 +156,7 @@ function(
 		
 		partOne : [
 			{
-				name: 'Portuguese',
+				name: $rootScope._t.skills.portuguese,
 				value : 100
 			},
 			{
@@ -154,11 +164,11 @@ function(
 				value : 100
 			},
 			{
-				name: 'Focus',
+				name: $rootScope._t.skills.focus,
 				value : 100
 			},
 			{
-				name: 'Agility',
+				name: $rootScope._t.skills.agility,
 				value : 100
 			},
 			{
@@ -189,7 +199,7 @@ function(
 
 		partTwo : [
 			{
-				name: 'Language C',
+				name: 'C',
 				value : 83
 			},
 			{
@@ -238,59 +248,114 @@ function(
 	$scope
 ){
 	
-	$scope.portfolioItens = [
-		{
-			title : 'MoByPharma - iOS and Android app',
-			description : 'Mobile application for compound pharmacys using Ionic Framework (AngularJS + Cordova)',
-			image : 'img/portfolio/mobypharma.jpg',
-			links : [
-				{ icon : 'fa-apple', url : 'https://itunes.apple.com/br/app/mobypharma/id1004769011?mt=8&ign-mpt=uo%3D4' },
-				{ icon : 'fa-android', url : 'https://play.google.com/store/apps/details?id=br.com.alternate.suafarmacia' }
-			]
-		},
-		{
-			title : 'Fagron companies app',
-			description : 'iOS, Android and WP8 application for Fagron companies, using Ionic Framework (AngularJS + Cordova). 14 countries / 18 apps, including USA, Brazil, Italy, Greece and Netherlands. (Link will show only apps published in your country)',
-			image : 'img/portfolio/fagron.jpeg',
-			links : [
-				{ icon : 'fa-apple', url : 'https://itunes.apple.com/br/artist/fagron-global/id964543843' },
-				{ icon : 'fa-android', url : 'https://play.google.com/store/apps/developer?id=Fagron%20BV&hl=pt_BR' },
-				{ icon : 'fa-windows', url : 'http://www.windowsphone.com/pt-BR/store/publishers?publisherId=Fagron%2BBV&appId=dbc413cb-87c9-4474-a88a-4949827d9a02' }
-			]
-		},
-		{
-			title : 'OWN Travel',
-			description : 'Hot site and travel app',
-			image : 'img/portfolio/owntravel.png',
-			links : [
-				{ icon : 'fa-link', url : 'http://owntravel.own.art.br/' }
-			]
-		},
-		{
-			title : 'Full Control Automação',
-			description : 'Bussiness web site',
-			image : 'img/portfolio/fullcontrol.png',
-			links : [
-				{ icon : 'fa-link', url : 'http://fullcontrolautomacao.com.br/' }
-			]
-		},
-		{
-			title : 'Rigamonti Ferreira',
-			description : 'Bussiness web site',
-			image : 'img/portfolio/rigamonti.png',
-			links : [
-				{ icon : 'fa-link', url : 'http://rigamontiferreira.com.br/' }
-			]
-		},
-		{
-			title : 'Estuidola - Play the music',
-			description : 'Music blog',
-			image : 'img/portfolio/estudiola.png',
-			links : [
-				{ icon : 'fa-link', url : 'http://www.estudiola.com/' }
-			]
-		}
-	];
+	$scope.portfolioItens = {
+		'pt-br' : [
+			{
+				title : 'MoByPharma - Applicativo',
+				description : 'App para farmácias de manipulação usando Ionic Framework (AngularJS + Cordova)',
+				image : 'img/portfolio/mobypharma.jpg',
+				links : [
+					{ icon : 'fa-apple', url : 'https://itunes.apple.com/br/app/mobypharma/id1004769011?mt=8&ign-mpt=uo%3D4' },
+					{ icon : 'fa-android', url : 'https://play.google.com/store/apps/details?id=br.com.alternate.suafarmacia' }
+				]
+			},
+			{
+				title : 'App Grupo Fagorn',
+				description : 'App iOS, Android e WP8 para empresas do grupo Fagron, usando Ionic Fram.. 14 paises / 18 apps, incluindo EUA, Brasil, Italia, Grécia e Holanda.',
+				image : 'img/portfolio/fagron.jpeg',
+				links : [
+					{ icon : 'fa-apple', url : 'https://itunes.apple.com/br/artist/fagron-global/id964543843' },
+					{ icon : 'fa-android', url : 'https://play.google.com/store/apps/developer?id=Fagron%20BV&hl=pt_BR' },
+					{ icon : 'fa-windows', url : 'http://www.windowsphone.com/pt-BR/store/publishers?publisherId=Fagron%2BBV&appId=dbc413cb-87c9-4474-a88a-4949827d9a02' }
+				]
+			},
+			{
+				title : 'OWN Travel',
+				description : 'Hot site e aplicativo para agências de viagens',
+				image : 'img/portfolio/owntravel.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://owntravel.own.art.br/' }
+				]
+			},
+			{
+				title : 'Full Control Automação',
+				description : 'Site institucional',
+				image : 'img/portfolio/fullcontrol.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://fullcontrolautomacao.com.br/' }
+				]
+			},
+			{
+				title : 'Rigamonti Ferreira',
+				description : 'Site institucional',
+				image : 'img/portfolio/rigamonti.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://rigamontiferreira.com.br/' }
+				]
+			},
+			{
+				title : 'Estuidola - Play the music',
+				description : 'Blog de música',
+				image : 'img/portfolio/estudiola.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://www.estudiola.com/' }
+				]
+			}
+		],
+		'en-us' : [
+			{
+				title : 'MoByPharma - Mobile app',
+				description : 'Mobile application for compound pharmacys using Ionic Framework (AngularJS + Cordova)',
+				image : 'img/portfolio/mobypharma.jpg',
+				links : [
+					{ icon : 'fa-apple', url : 'https://itunes.apple.com/br/app/mobypharma/id1004769011?mt=8&ign-mpt=uo%3D4' },
+					{ icon : 'fa-android', url : 'https://play.google.com/store/apps/details?id=br.com.alternate.suafarmacia' }
+				]
+			},
+			{
+				title : 'Fagron companies app',
+				description : 'iOS, Android and WP8 application for Fagron companies, using Ionic Framework (AngularJS + Cordova). 14 countries / 18 apps, including USA, Brazil, Italy, Greece and Netherlands. (Link will show only apps published in your country)',
+				image : 'img/portfolio/fagron.jpeg',
+				links : [
+					{ icon : 'fa-apple', url : 'https://itunes.apple.com/br/artist/fagron-global/id964543843' },
+					{ icon : 'fa-android', url : 'https://play.google.com/store/apps/developer?id=Fagron%20BV&hl=pt_BR' },
+					{ icon : 'fa-windows', url : 'http://www.windowsphone.com/pt-BR/store/publishers?publisherId=Fagron%2BBV&appId=dbc413cb-87c9-4474-a88a-4949827d9a02' }
+				]
+			},
+			{
+				title : 'OWN Travel',
+				description : 'Hot site and travel app',
+				image : 'img/portfolio/owntravel.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://owntravel.own.art.br/' }
+				]
+			},
+			{
+				title : 'Full Control Automação',
+				description : 'Bussiness web site',
+				image : 'img/portfolio/fullcontrol.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://fullcontrolautomacao.com.br/' }
+				]
+			},
+			{
+				title : 'Rigamonti Ferreira',
+				description : 'Bussiness web site',
+				image : 'img/portfolio/rigamonti.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://rigamontiferreira.com.br/' }
+				]
+			},
+			{
+				title : 'Estuidola - Play the music',
+				description : 'Music blog',
+				image : 'img/portfolio/estudiola.png',
+				links : [
+					{ icon : 'fa-link', url : 'http://www.estudiola.com/' }
+				]
+			}
+		]
+	};
 
 }])
 ;

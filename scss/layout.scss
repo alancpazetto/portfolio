@@ -4,6 +4,8 @@ $thirdColor: 	#FEFEEB;
 $fourthColor: 	#F8F4E4;
 $fifthColor: 	#A5B3AA;
 
+//COLOR PALETTE: http://www.colourlovers.com/palette/692385/Making_Coffee
+
 $fa-font-path:        "../lib/font-awesome/fonts" !default;
 @import "../app/lib/font-awesome/scss/font-awesome";
 
@@ -16,9 +18,25 @@ $flag-icon-css-path: '../lib/flag-icon-css/flags';
 // $max-width: 100%;
 @import "../app/lib/neat/app/assets/stylesheets/neat";
 
+$tablet-size:720px;
+$mobile-max-size:em( $tablet-size );
+$desktop-size:em(960);
+$largedesktop-size:em(1050);
+
+// Bourbon Neat Breakpoints
+$mobile: new-breakpoint(max-width $mobile-max-size 4);
+$tablet: new-breakpoint(min-width $mobile-max-size max-width $desktop-size 8);
+$desktop: new-breakpoint(min-width $desktop-size max-width $largedesktop-size 12);
+$largedesktop: new-breakpoint(min-width $largedesktop-size 16);
+
 @mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
 	-webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
 	box-shadow: $shadow;
+}
+
+@mixin omega-reset($nth) {
+	&:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+	&:nth-child(#{$nth}+1) { clear: none }
 }
 
 *{
@@ -65,38 +83,8 @@ a:visited{
 
 .container{
 	@include outer-container;
-}
-
-nav{
-	// @include position(fixed, 0 null null 0);
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 9000;
-	@include size(100% 60px);
-	min-height: 60px;
-	line-height:60px;
-	background: rgba( red($secondColor), green($secondColor), blue($secondColor), .7 );
-	color: $thirdColor;
-	display: none;
-
-	.container{
-
-		.links-menu{
-			
-			a{
-				float: left;
-				margin-right: 30px;
-			}
-
-		}
-
-		.flags{
-			margin-left: 30px;
-			// margin-top: 6px;
-		}
-
-	}
+	padding-left: 10px;
+	padding-right: 10px;
 
 }
 
@@ -140,12 +128,31 @@ h1, h2, h3{
 		h1{
 			text-align: left;
 			@include position(absolute, 200px null null 10px);
+			
+			.blink-me{
+				text-shadow: none;
+			}
+
+			@include media($mobile){
+				font-size: 30px;
+				text-shadow: none;
+				font-weight: 400;
+				@include position(absolute, 100px null null 10px);
+			}
+
 		}
 
 		.social-icons{
 			text-align: left;
 			@include position(absolute, 500px null null 10px);
 			font-size: 35px;
+
+			@include media($mobile){
+				font-size: 30px;
+				text-align: center;
+				width: 100%;
+				@include position(absolute, 350px null null 0px);
+			}
 
 			a{
 				margin: 0 5px;
@@ -157,6 +164,11 @@ h1, h2, h3{
 			text-align: right;
 			@include position(absolute, 30px 10px null null);
 			font-size: 12px;
+
+			@include media($mobile){
+				font-size: 20px;
+				top: 40px;
+			}
 
 			a{
 				margin: 0 5px;
@@ -174,6 +186,10 @@ h1, h2, h3{
 	.container{
 		padding-top: 50px;
 
+		h1{
+			text-shadow: 1px 1px 0px $fifthColor;
+		}
+
 		h1, h2, h3{
 			color: $secondColor;
 		}
@@ -182,6 +198,12 @@ h1, h2, h3{
 			margin: 0;
 			margin-top: 50px;
 			margin-bottom: 10px;
+
+			@include media($mobile){
+				margin-top: 20px;
+				margin-bottom: 10px;
+			}
+
 		}
 
 		.skill-area{
@@ -193,6 +215,15 @@ h1, h2, h3{
 
 				&:nth-child(odd){
 					@include shift(1);
+				}
+
+				@include media($mobile){
+					@include span-columns(4 of 4);
+
+					&:nth-child(odd){
+						@include shift(0);
+					}
+
 				}
 
 				.skills-container{
@@ -211,6 +242,15 @@ h1, h2, h3{
 
 						.skill-name{
 							@include span-columns(3 of 12);
+
+							@include media($mobile){
+								@include span-columns(4 of 12);
+							}
+
+							@include media($tablet){
+								@include span-columns(4 of 12);
+							}
+
 						}
 
 						.skill-bar{
@@ -219,6 +259,14 @@ h1, h2, h3{
 							border: solid 1px $firstColor;
 							padding: 3px;
 							height: 23px;
+
+							@include media($mobile){
+								@include span-columns(8 of 12);
+							}
+
+							@include media($tablet){
+								@include span-columns(8 of 12);
+							}
 
 							&.skill-100{
 								@include box-shadow(0 0 4px $firstColor);
@@ -252,12 +300,17 @@ h1, h2, h3{
 	.container{
 		padding-top: 50px;
 
+		h1{
+			text-shadow: 1px 1px 0px $fifthColor;
+		}
+
 		.portfolio-container{
 			@include outer-container;
 			@include omega;
 
 			.portfolio-item{
-				@include span-columns(4 of 12);
+				// @include span-columns(4 of 12);
+				// @include omega(3n);
 				margin-bottom: 30px;
 				background-image: url('http://www.dreamholidayblog.com/wp-content/uploads/2014/08/blurry-city-night-skyline-wallpaper.jpg');
 				background-repeat: no-repeat;
@@ -266,17 +319,51 @@ h1, h2, h3{
 				height: 200px;
 				position: relative;
 				overflow: hidden;
+				
+				@include media($mobile){
+					@include span-columns(4 of 4);
+					@include omega(1n);
 
-				&:nth-child(3n+3){
-					@include omega;
-				}
+					&.open{
 
-				&:hover{
+						.portfolio-item-text{
+							@include transform( translateY(0) );
+							background: rgba(0,0,0,.9);
+						}
 
-					.portfolio-item-text{
-						@include transform( translateY(0) );
 					}
 
+				}
+
+				@mixin addHoverPortfolioItem {
+
+					&:hover{
+
+						.portfolio-item-text{
+							@include transform( translateY(0) );
+							background: rgba(0,0,0,.9);
+						}
+
+					}
+
+				}
+
+				@include media($tablet){ 
+					@include span-columns(4 of 8);
+					@include omega(2n+0);
+					@include addHoverPortfolioItem; 
+				}
+
+				@include media($desktop){
+					@include span-columns(4 of 12);
+					@include omega(3n);
+					@include addHoverPortfolioItem;
+				}
+
+				@include media($largedesktop){
+					@include span-columns(4 of 12);
+					@include omega(3n);
+					@include addHoverPortfolioItem;
 				}
 
 				.portfolio-item-text{
@@ -293,6 +380,10 @@ h1, h2, h3{
 						width: 100%;
 						text-align: center;
 						@include position(absolute, null null 15px 0);
+
+						@include media($mobile){
+							bottom: 5px;
+						}
 
 						a{
 							font-size: 20px;
@@ -333,11 +424,19 @@ h1, h2, h3{
 		padding-top: 50px;
 		padding-bottom: 50px;
 
+		h1{
+			text-shadow: 1px 1px 0px $secondColor;
+		}
+
 		p{
 			font-size: 20px;
 			font-weight: 300;
 			padding-left: 30px;
 			position: relative;
+
+			@include media($mobile){
+				.title{ display: none; }
+			}
 
 			i{
 				@include position(absolute, 0 null null 0);
@@ -345,7 +444,7 @@ h1, h2, h3{
 			}
 
 		}
-		a{
+		a:hover{
 			text-decoration: underline;
 		}
 
@@ -354,59 +453,59 @@ h1, h2, h3{
 }
 
 .blink-me {
-  font-weight: 100;
-  font-size: 90%;
-  color: $fourthColor;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
-  position: relative;
-  top:-5px;
+	font-weight: 100;
+	font-size: 90%;
+	color: $fourthColor;
+	-webkit-animation: 1s blink step-end infinite;
+	-moz-animation: 1s blink step-end infinite;
+	-ms-animation: 1s blink step-end infinite;
+	-o-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+	position: relative;
+	top:-5px;
 }
 
 @keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: $fourthColor;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: $fourthColor;
+	}
 }
 
 @-moz-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: $fourthColor;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: $fourthColor;
+	}
 }
 
 @-webkit-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: $fourthColor;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: $fourthColor;
+	}
 }
 
 @-ms-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: $fourthColor;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: $fourthColor;
+	}
 }
 
 @-o-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: $fourthColor;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: $fourthColor;
+	}
 }
