@@ -160,6 +160,27 @@ h1, h2, h3{
 			
 		}
 
+		.scroll-alert{
+			@include position(absolute, 630px null null 0px);
+			font-size: 20px;
+			width: 100%;
+			text-align: center;
+
+			i{
+				-webkit-animation: 1s scrollAnimation infinite;
+				-moz-animation: 1s scrollAnimation infinite;
+				-ms-animation: 1s scrollAnimation infinite;
+				-o-animation: 1s scrollAnimation infinite;
+				animation: 1s scrollAnimation infinite;
+			}
+
+			@include media($mobile){
+				font-size: 15px;
+				@include position(absolute, 430px null null 0px);
+			}
+
+		}
+
 		.language-flags{
 			text-align: right;
 			@include position(absolute, 30px 10px null null);
@@ -507,5 +528,50 @@ h1, h2, h3{
 	}
 	50% {
 		color: $fourthColor;
+	}
+}
+
+@keyframes "scrollAnimation" {
+	from, to {
+		@include transform( translateY(0) )
+	}
+	50% {
+		@include transform( translateY(5px) )
+	}
+}
+
+@-moz-keyframes scrollAnimation {
+	from, to {
+		@include transform( translateY(0) )
+	}
+	50% {
+		@include transform( translateY(5px) )
+	}
+}
+
+@-webkit-keyframes "scrollAnimation" {
+	from, to {
+		@include transform( translateY(0) )
+	}
+	50% {
+		@include transform( translateY(5px) )
+	}
+}
+
+@-ms-keyframes "scrollAnimation" {
+	from, to {
+		@include transform( translateY(0) )
+	}
+	50% {
+		@include transform( translateY(5px) )
+	}
+}
+
+@-o-keyframes "scrollAnimation" {
+	from, to {
+		@include transform( translateY(0) )
+	}
+	50% {
+		@include transform( translateY(5px) )
 	}
 }
