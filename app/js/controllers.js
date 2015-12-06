@@ -207,10 +207,6 @@ function(
 				value : 80
 			},
 			{
-				name: 'Photoshop',
-				value : 80
-			},
-			{
 				name: 'C#',
 				value : 75
 			},
