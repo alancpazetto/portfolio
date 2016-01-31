@@ -2,15 +2,18 @@
   "name": "AlanPazettoPortfolio",
   "version": "0.1.0",
   "devDependencies": {
+    "connect-livereload": "^0.5.3",
     "grunt": "~0.4.2",
-    "grunt-connect": "^0.2.0",
-    "load-grunt-tasks": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-sass": "^0.9.2",
-    "grunt-concurrent": "1.0.0",
-    "grunt-contrib-connect": "^0.10.1",
+    "grunt-browserify2": "^0.1.8",
     "grunt-cli": "^0.1.13",
-    "connect-livereload": "^0.5.3"
+    "grunt-concurrent": "1.0.0",
+    "grunt-connect": "^0.2.0",
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^1.0.0"
   },
   "main": "Gruntfile.js",
   "scripts": {

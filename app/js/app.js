@@ -16,8 +16,8 @@ function(
 				cvLink : 'https://docs.google.com/document/d/1vas93G-6uM2sXNJ5uxVNw7gGlZ0gt4Ab0U15AjHUm8s/edit?usp=sharing'
 			},
 			banner : {
-				firstLine : 'Olá, eu sou o Alan!',
-				secondLine : 'Sou um desenvolvedor web e mobile!',
+				firstLine : 'Olá, eu sou o Alan',
+				secondLine : 'Sou um desenvolvedor web e mobile',
 				seeThisCode : 'Ver código do site',
 				seeCV : 'Ver curriculo'
 			},
@@ -47,8 +47,8 @@ function(
 				cvLink : 'https://docs.google.com/document/d/108sSyuLiERqvO_1erTYFRp8V2RQxOt5r5e--h65oP_c/edit?usp=sharing'
 			},
 			banner : {
-				firstLine : 'Hello, I\'m Alan!',
-				secondLine : 'And I\'m Web and Mobile developer.',
+				firstLine : 'Hello, I\'m Alan',
+				secondLine : 'And I\'m Web and Mobile developer',
 				seeThisCode : 'See this code',
 				seeCV : 'See CV'
 			},

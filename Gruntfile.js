@@ -44,11 +44,49 @@ module.exports = function (grunt) {
 			options: {
 				logConcurrentOutput: true
 			},
-			prod: {
-				tasks: ["watch", "php"]
-			},
 			serve: {
 				tasks: ["watch", "connect:server"]
+			}
+		},
+		dist : {
+			
+		},
+		copy : {
+			main : {
+				files: [
+					{
+						expand: true, 
+						src: [
+							'app/**/*.html', 
+							'app/css/*.css',
+							'app/**/*.svg',
+							'app/**/*.eot',
+							'app/**/*.ttf',
+							'app/**/*.woff',
+							'app/**/*.otf',
+							'app/**/*.jpg',
+							'app/**/*.jpeg',
+							'app/**/*.png',
+						], 
+						dest: './dist/', 
+						filter: 'isFile'
+					}
+			    ]
+			}
+		},
+		uglify: {
+			options: {
+				mangle: false
+			},
+			dist: {
+				files: {
+					'dist/app/js/script.min.498ch89.js': [
+						'app/lib/angularjs/angular.min.js',
+						'app/js/app.js',
+						'app/js/controllers.js',
+						'app/js/directives.js'
+					]
+				}
 			}
 		}
 	});
@@ -57,7 +95,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	grunt.registerTask('default', ['concurrent:serve']);
+	grunt.registerTask('dist', [
+		'copy:main',
+		'uglify:dist'
+	]);
 
 };

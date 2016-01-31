@@ -6,16 +6,13 @@ $fifthColor: 	#A5B3AA;
 
 //COLOR PALETTE: http://www.colourlovers.com/palette/692385/Making_Coffee
 
+@import url(http://fonts.googleapis.com/css?family=Josefin+Slab:300,400,600,700);
+
 $fa-font-path:        "../lib/font-awesome/fonts" !default;
 @import "../app/lib/font-awesome/scss/font-awesome";
-
 $flag-icon-css-path: '../lib/flag-icon-css/flags';
 @import "../app/lib/flag-icon-css/sass/flag-icon";
-
 @import "../app/lib/bourbon/app/assets/stylesheets/bourbon";
-
-// $visual-grid: true;
-// $max-width: 100%;
 @import "../app/lib/neat/app/assets/stylesheets/neat";
 
 $tablet-size:720px;
@@ -116,7 +113,7 @@ h1, h2, h3{
 				@include size(40px);
 				border-radius: 50%;
 				@include position(absolute, 0 null null 0);
-				background-image: url('https://scontent-gru1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/11701165_851572808246713_8832551926644940655_n.jpg?oh=e8a413b7e3eb631d22ebda2bdd28fa5a&oe=56230ABB');
+				background-image: url('../img/profile.jpg');
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
