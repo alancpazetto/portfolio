@@ -2,7 +2,7 @@
   "name": "AlanPazettoPortfolio",
   "version": "0.1.0",
   "devDependencies": {
-    "connect-livereload": "^0.5.3",
+    "connect-livereload": "^0.6.1",
     "grunt": "~0.4.2",
     "grunt-browserify2": "^0.1.8",
     "grunt-cli": "^0.1.13",
